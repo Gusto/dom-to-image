@@ -50,6 +50,8 @@
      * @param {Number} options.scale - scale factor for image quality rendering (to unblurry JPEG and PNG output),
                 default = unset = no scaling applied = 1.0.
      * @param {Boolean} options.cacheBust - set to true to cache bust by appending the time to the request url
+     * @param {Boolean} options.shouldEncodeUri - set to true to encode the SVG output; for compatibility purposes on Edge but will break styling
+                defaults to falsey
      * @return {Promise} - A promise that is fulfilled with a SVG image data URL
      * */
     function toSvg(node, options) {
@@ -65,7 +67,8 @@
             .then(function (clone) {
                 return makeSvgDataUri(clone,
                     options.width || util.width(node),
-                    options.height || util.height(node)
+                    options.height || util.height(node),
+                    options.shouldEncodeUri
                 );
             });
 
@@ -337,7 +340,7 @@
             });
     }
 
-    function makeSvgDataUri(node, width, height) {
+    function makeSvgDataUri(node, width, height, shouldEncodeUri) {
         return Promise.resolve(node)
             .then(function (node) {
                 node.setAttribute('xmlns', 'http://www.w3.org/1999/xhtml');
@@ -352,7 +355,11 @@
                     foreignObject + '</svg>';
             })
             .then(function (svg) {
-                return 'data:image/svg+xml;charset=utf-8,' + svg;
+                if (shouldEncodeUri) {
+                  return encodeURI('data:image/svg+xml;charset=utf-8,' + svg);
+                } else {
+                  return 'data:image/svg+xml;charset=utf-8,' + svg;
+                }
             });
     }
 
