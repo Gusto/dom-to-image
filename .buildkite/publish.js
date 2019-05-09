@@ -20,6 +20,11 @@ function hasBeenPublished() {
 }
 
 function buildAndPublish() {
+  if (hasBeenPublished()) {
+    console.log(`${name}@${version} already published. Skipping build.`);
+    return;
+  }
+
   // yarn publish prompts for the new package version and bumps it for you in the package.json,
   // so we'll have to stick with npm publish for now
   execAndLog(`npm publish`);
