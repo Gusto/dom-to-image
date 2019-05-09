@@ -1,10 +1,6 @@
 steps:
   - name: ':npm: Publish to npm'
     command: '.buildkite/run.sh .buildkite/publish.js'
-    agents:
-      queue: npm-publish
-  - name: ':book: Deploy documentation'
-    command: '.buildkite/run.sh .buildkite/styleguide_deploy.sh'
-    branches: 'master'
+    branches: master
     agents:
       queue: npm-publish
