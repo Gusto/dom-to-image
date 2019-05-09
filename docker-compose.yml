@@ -1,0 +1,10 @@
+version: '2'
+services:
+  main:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - BUILDKITE_BRANCH=${BUILDKITE_BRANCH}
+    volumes:
+      - ~/.npmrc:/home/gusto/.npmrc
