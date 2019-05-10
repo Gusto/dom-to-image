@@ -1,5 +1,5 @@
 {
-    "name": "dom-to-image",
+    "name": "@gusto/dom-to-image",
     "version": "2.6.0",
     "description": "Generates an image from a DOM node using HTML5 canvas and SVG",
     "main": "src/dom-to-image.js",
@@ -25,7 +25,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/tsayen/dom-to-image.git"
+        "url": "git+https://github.com/Gusto/dom-to-image"
     },
     "keywords": [
         "dom",
@@ -39,7 +39,7 @@
     "author": "Anatolii Saienko <anatoly.sayenko@gmail.com>",
     "license": "MIT",
     "bugs": {
-        "url": "https://github.com/tsayen/dom-to-image/issues"
+        "url": "https://github.com/Gusto/dom-to-image/issues"
     },
-    "homepage": "https://github.com/tsayen/dom-to-image#readme"
+    "homepage": "https://github.com/Gusto/dom-to-image#readme"
 }

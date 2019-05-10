@@ -1,0 +1,6 @@
+steps:
+  - name: ':npm: Publish to npm'
+    command: '.buildkite/run.sh .buildkite/publish.js'
+    branches: master
+    agents:
+      queue: npm-publish
